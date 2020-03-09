@@ -1,0 +1,183 @@
+
+<html>
+    <head>
+        <title>form validation </title>
+        
+        <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQULfCRN0yh6zPyh-eJgoTGEucUDXeKmiY_cAC1P_j3myemJo62">
+        <style>
+            body{
+                margin-top: 5%;
+                text-align: center;
+                width: 25%;
+                margin-left: 37%;
+            
+            }
+            b{
+                text-align: center;
+            }
+            
+            dd{
+                background:darkgray;
+                height: 65%;
+                width: 100%;
+                border: 2px solid black;
+            }
+            
+            input[type=text],input[type=password]{
+                margin-top:30px;
+                border: 1px dotted blue;
+                border-top: transparent;
+                border-left: transparent;
+                border-right: transparent;
+             }
+            input{
+                margin-left: 2%;
+            }
+            input[type=submit]{
+                 margin-top:30px;
+                 background-color:blue;
+                 color: white;
+                 width: 50%;
+                 height: 40px;
+                font-size: 20px;
+            }
+            h2  {
+                color:darkmagenta;
+            }
+        
+            #check{
+                width: 3%;
+                margin-top: -3%;
+                left:58%; 
+                color: red;
+                
+                position: absolute;
+                 
+            }
+        </style>
+        <script>
+            function vd(){
+                var p1=document.forms["myform"] ["fn"].value;
+                var p2=document.forms["myform"] ["ln"].value;
+                var ema=document.forms["myform"] ["eml"].value;
+                var p3=document.forms["myform"] ["ud"].value;
+           
+                
+                if(p1== ""){
+                    document.getElementById("n").innerHTML="please enter valid name";
+                    fn.focus();
+                    return false;
+                }
+                else{
+                     document.getElementById("n").innerHTML="";
+                }
+                
+                 
+                if(p2==""){
+                    document.getElementById("f").innerHTML="please enter valid name";
+                    ln.focus();
+                    return false;
+                }
+                else{
+                     document.getElementById("f").innerHTML="";
+                }
+                
+     
+              
+   
+                var a=ema.split(".");
+                if(ema== ""){
+                   document.getElementById("g").innerHTML="please enter valid email";
+                    eml.focus();
+                    return false;
+                }
+                
+                 else{
+                     document.getElementById("g").innerHTML="";
+                }
+                
+                
+                if(ema.indexOf("@",0)<0){
+                     document.getElementById("g").innerHTML=  "please enter your email using '@'";
+                        eml.focus();
+                        return false;
+                }
+                else{
+                    document.getElementById("g").innerHTML="";
+                }
+              
+                
+               
+                if(ema.indexOf(".",0)<0){
+                    document.getElementById("g").innerHTML="please enter your email using '.'";
+                    eml.focus();
+                    return false;
+                }
+             
+                
+                if(a[1].length<2){
+                    document.getElementById("g").innerHTML="please after '.' atleast two character required";
+                    eml.focus();
+                    return false;
+                } 
+                else{
+                    document.getElementById("g").innerHTML="";
+                }
+                
+      
+                 if(p3==""){
+                    document.getElementById("u").innerHTML="please enter valid user id";
+                    ud.focus();
+                    return false;
+                }
+                else{
+                     document.getElementById("u").innerHTML="";
+                }
+                
+    function myin()
+            {
+                var pb=document.forms["myform"]["pa"].value;
+                var pc=document.forms["myform"]["pa1"].value;
+                if(pb != pc || pc=="")
+                    {
+                        document.getElementById("check").innerHTML="wrong password";
+                    }
+          
+            else{
+              document.getElementById("check").innerHTML="";   
+            }
+               
+                
+            }
+            
+             alert("Thankyou for submitting...your registration successful ");
+                  
+               }
+            
+        </script>
+    </head>
+    <body>
+       <dd> <form name="myform">
+            <h2>FORM VALIDATION</h2>
+            <b>Firstname : </b>    <input  type="text" required placeholder="Enter the Firstname" name="fn">
+           <div id="n"></div><br>
+           <b>Lastname  : </b>    <input  type="text" required placeholder="Enter the Lastname" name="ln">
+           <div id="f"></div><br>
+          <b> Email ID  :</b>    <input  type="text" required placeholder="Enter the valid Email id " name="eml" minlength="10">
+           <div id="g"></div><br>
+           <b> User ID :</b>    <input  type="text" required placeholder="Enter the valid User id" name="ud">
+           <div id="u"></div><br> 
+           <b>Password  :</b>      <input  type="password" id="pwd" required  name="pa">
+      <br><br>
+            <b>Confirm Password:</b><input  type="password" id="pwd1" required  oninput="myin()" name="pa1">
+        
+            <div id="check"></div>
+            <br>
+
+            <input type="submit" onclick="vd()">
+             
+            
+        </form></dd>
+    </body>
+</html>
+    
